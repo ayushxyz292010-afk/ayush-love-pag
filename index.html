@@ -3,276 +3,352 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Babyyy 💗</title>
+<title>A Little Surprise For You 💖</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    min-height: 100vh;
-    overflow: hidden;
-    font-family: "Trebuchet MS", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+    color:white;
     background:
-        radial-gradient(circle at 20% 20%, #ffd6e7 0%, transparent 30%),
-        radial-gradient(circle at 80% 80%, #d8c7ff 0%, transparent 30%),
-        linear-gradient(135deg, #ff9fc4, #c8a7ff, #9edfff);
+      radial-gradient(circle at top,#402060 0%,#160d2d 45%,#070713 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-/* Background glow */
-.glow {
-    position: fixed;
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.22);
-    filter: blur(40px);
-    animation: glow 5s infinite alternate;
+.stars{
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(white 1px,transparent 1px),
+      radial-gradient(white 1px,transparent 1px);
+    background-size:80px 80px,120px 120px;
+    background-position:10px 20px,50px 70px;
+    opacity:.5;
+    animation:moveStars 12s linear infinite;
 }
 
-@keyframes glow {
-    from { transform: scale(0.8); }
-    to { transform: scale(1.2); }
+@keyframes moveStars{
+    from{transform:translateY(0)}
+    to{transform:translateY(80px)}
 }
 
-/* Main card */
-.card {
-    position: relative;
-    width: min(90%, 500px);
-    padding: 45px 25px;
-    text-align: center;
-    border-radius: 30px;
-    background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.5);
-    box-shadow: 0 20px 60px rgba(90,40,100,0.25);
-    z-index: 5;
+.screen{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:430px;
+    animation:fadeIn 1s;
 }
 
-.emoji {
-    font-size: 65px;
-    animation: bounce 1.5s infinite;
+.hidden{
+    display:none;
 }
 
-@keyframes bounce {
-    50% { transform: translateY(-10px) rotate(5deg); }
+h1{
+    font-size:30px;
+    margin-bottom:15px;
 }
 
-h1 {
-    margin-top: 15px;
-    color: white;
-    font-size: 32px;
-    text-shadow: 0 3px 12px rgba(100,30,80,0.3);
+p{
+    font-size:17px;
+    line-height:1.6;
 }
 
-p {
-    margin-top: 15px;
-    color: white;
-    font-size: 18px;
-    line-height: 1.5;
+.gift{
+    width:150px;
+    height:120px;
+    margin:35px auto 25px;
+    position:relative;
+    cursor:pointer;
+    animation:bounce 1.5s infinite;
 }
 
-.buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    position: relative;
-    min-height: 60px;
+.box{
+    position:absolute;
+    bottom:0;
+    width:150px;
+    height:90px;
+    background:#ff4f91;
+    border-radius:8px;
 }
 
-button {
-    border: none;
-    padding: 14px 30px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.25s;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.lid{
+    position:absolute;
+    top:5px;
+    left:-8px;
+    width:166px;
+    height:32px;
+    background:#ff76aa;
+    border-radius:8px;
 }
 
-#yes {
-    background: #ff4f91;
-    color: white;
+.ribbon-v{
+    position:absolute;
+    left:62px;
+    bottom:0;
+    width:27px;
+    height:120px;
+    background:#ffd1e3;
+    opacity:.9;
 }
 
-#yes:hover {
-    transform: scale(1.1);
-    background: #ff287c;
+.ribbon-h{
+    position:absolute;
+    top:5px;
+    left:0;
+    width:150px;
+    height:32px;
+    background:#ffd1e3;
+    opacity:.9;
 }
 
-#no {
-    background: white;
-    color: #555;
-    position: relative;
+@keyframes bounce{
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-12px) rotate(2deg)}
 }
 
-/* Floating hearts */
-.heart {
-    position: fixed;
-    bottom: -30px;
-    font-size: 22px;
-    animation: floatUp linear forwards;
-    pointer-events: none;
-    z-index: 1;
+button{
+    border:0;
+    padding:14px 30px;
+    border-radius:30px;
+    font-size:17px;
+    cursor:pointer;
+    background:white;
+    color:#e63d82;
+    box-shadow:0 5px 20px #0005;
 }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
+.flowers{
+    font-size:55px;
+    margin:25px 0;
+    animation:grow 2s ease;
+}
+
+@keyframes grow{
+    from{transform:scale(0);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+.envelope{
+    font-size:85px;
+    margin:25px;
+    cursor:pointer;
+    animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+    50%{transform:scale(1.12)}
+}
+
+.letter{
+    background:#fff;
+    color:#54203b;
+    padding:28px 22px;
+    border-radius:20px;
+    box-shadow:0 15px 40px #0008;
+    animation:letterOpen 1s;
+}
+
+@keyframes letterOpen{
+    from{transform:scale(.5) rotate(-5deg);opacity:0}
+    to{transform:scale(1) rotate(0);opacity:1}
+}
+
+.heart{
+    position:fixed;
+    font-size:25px;
+    animation:floatUp 4s linear forwards;
+    z-index:1;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0) scale(.7);
+        opacity:1;
     }
-    100% {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
+    to{
+        transform:translateY(-100vh) scale(1.5);
+        opacity:0;
     }
 }
 
-/* Success screen */
-.success {
-    display: none;
-}
-
-.success h2 {
-    color: white;
-    font-size: 35px;
-    margin-top: 15px;
-}
-
-.flowers {
-    font-size: 55px;
-    margin-top: 15px;
-    animation: flowerPop 1s infinite alternate;
-}
-
-@keyframes flowerPop {
-    from { transform: scale(0.9); }
-    to { transform: scale(1.12); }
-}
-
-.loveText {
-    font-size: 20px;
-    margin-top: 15px;
-    color: white;
+.big{
+    font-size:35px;
+    color:#ff72a8;
+    margin:18px 0;
+    font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
+<div class="stars"></div>
 
-<div class="card" id="mainCard">
+<!-- SCREEN 1 -->
+<div class="screen" id="screen1">
+    <h1>✨ A Little Surprise ✨</h1>
 
-    <div id="question">
-        <div class="emoji">🥺💗</div>
+    <p>
+        Tumhare liye kuch special hai... 🥺💗
+        <br>
+        Gift ko tap karo 🎁
+    </p>
 
-        <h1>Will You Be My Girlfriend? 💕</h1>
+    <div class="gift" onclick="openGift()">
+        <div class="lid"></div>
+        <div class="box"></div>
+        <div class="ribbon-v"></div>
+        <div class="ribbon-h"></div>
+    </div>
+</div>
 
-        <p>
-            I have a little question for you...<br>
-            Will you stay by my side? 🌸✨
-        </p>
 
-        <div class="buttons">
-            <button id="yes">YES ❤️</button>
-            <button id="no">NO 🤍</button>
-        </div>
+<!-- SCREEN 2 -->
+<div class="screen hidden" id="screen2">
+    <h1>🌸 For You 🌸</h1>
+
+    <div class="flowers">
+        🌷 🌸 🌹 🌸 🌷
     </div>
 
-    <div class="success" id="success">
-        <div class="flowers">🌸🌷🌹🌺🌷🌸</div>
+    <p>
+        Har flower ke saath ek chhoti si smile tumhare liye... 🫶
+    </p>
 
-        <h2>YAYYY! 🥹💗</h2>
+    <br>
 
-        <p class="loveText">
-            You just made my heart so happy! 💕<br>
-            I LOVE YOU SO MUCH BABYYY ❤️
+    <button onclick="openLetter()">
+        💌 Open Your Letter
+    </button>
+</div>
+
+
+<!-- SCREEN 3 -->
+<div class="screen hidden" id="screen3">
+    <h1>💌 Secret Letter</h1>
+
+    <div class="envelope" onclick="showMessage()">
+        💌
+    </div>
+
+    <p>Letter ko tap karo... 👀💗</p>
+</div>
+
+
+<!-- SCREEN 4 -->
+<div class="screen hidden" id="screen4">
+
+    <div class="letter">
+
+        <div style="font-size:45px;">🌸💗🌸</div>
+
+        <h1>Hey Babyyy... 🥺</h1>
+
+        <p>
+            Pata nahi ye words kitna express kar paayenge,
+            but ek baat dil se kehni thi...
         </p>
 
-        <div class="flowers">🌹💐🌸💗🌸💐🌹</div>
+        <div class="big">
+            I LOVE YOU BABYY ❤️
+            <br>
+            VERY MUCH 💕
+        </div>
+
+        <p>
+            Tum mere liye bahut special ho. 🫶
+            <br>
+            Bas aise hi meri life mein smile karti rehna. 🌷
+        </p>
+
+        <br>
+
+        <button onclick="finalSurprise()">
+            💖 One More Surprise
+        </button>
+
     </div>
 
 </div>
 
+
 <script>
 
-/* YES button */
-document.getElementById("yes").addEventListener("click", function() {
+function hideAll(){
+    document.querySelectorAll(".screen")
+    .forEach(x => x.classList.add("hidden"));
+}
 
-    document.getElementById("question").style.display = "none";
-    document.getElementById("success").style.display = "block";
+function openGift(){
+    hideAll();
+    document.getElementById("screen2")
+    .classList.remove("hidden");
 
-    /* Celebration hearts + flowers */
-    const items = ["❤️","💗","💕","🌸","🌷","🌹","💐","✨","💖"];
+    hearts();
+}
 
-    for (let i = 0; i < 70; i++) {
+function openLetter(){
+    hideAll();
+    document.getElementById("screen3")
+    .classList.remove("hidden");
+
+    hearts();
+}
+
+function showMessage(){
+    hideAll();
+    document.getElementById("screen4")
+    .classList.remove("hidden");
+
+    hearts();
+}
+
+function finalSurprise(){
+
+    for(let i=0;i<35;i++){
         setTimeout(() => {
-            createHeart(items[Math.floor(Math.random() * items.length)]);
-        }, i * 60);
+            hearts();
+        }, i*100);
     }
-});
 
+    alert("I LOVE YOU BABYY ❤️🌸");
+}
 
-/* NO button playful movement */
-const noButton = document.getElementById("no");
-
-noButton.addEventListener("click", function() {
-
-    const x = Math.random() * 220 - 110;
-    const y = Math.random() * 120 - 60;
-
-    noButton.style.transform =
-        `translate(${x}px, ${y}px)`;
-
-    noButton.innerText = "Are you sure? 🥺";
-});
-
-
-/* Also moves when mouse gets close */
-noButton.addEventListener("mouseenter", function() {
-
-    const x = Math.random() * 220 - 110;
-    const y = Math.random() * 120 - 60;
-
-    noButton.style.transform =
-        `translate(${x}px, ${y}px)`;
-});
-
-
-/* Floating background hearts */
-function createHeart(symbol) {
+function hearts(){
 
     const heart = document.createElement("div");
 
-    heart.className = "heart";
-    heart.innerHTML = symbol;
+    const emojis = ["❤️","💗","💕","💖","🌸","🌷","✨"];
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.className = "heart";
+    heart.innerHTML =
+      emojis[Math.floor(Math.random()*emojis.length)];
+
+    heart.style.left =
+      Math.random()*100 + "vw";
+
+    heart.style.bottom = "-30px";
+
     heart.style.animationDuration =
-        (4 + Math.random() * 5) + "s";
+      (3 + Math.random()*3) + "s";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
+    setTimeout(()=>{
         heart.remove();
-    }, 9000);
+    },6000);
 }
-
-
-/* Continuous background animation */
-setInterval(() => {
-    const symbols = ["💗","💕","💖","✨","🌸"];
-    createHeart(symbols[Math.floor(Math.random() * symbols.length)]);
-}, 700);
 
 </script>
 
