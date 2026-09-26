@@ -2,352 +2,601 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Surprise For You 💖</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For My Special Person 💗</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-    min-height:100vh;
-    overflow:hidden;
-    font-family:Arial, sans-serif;
-    color:white;
-    background:
-      radial-gradient(circle at top,#402060 0%,#160d2d 45%,#070713 100%);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+  min-height:100vh;
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+  color:white;
+  background:
+    radial-gradient(circle at 50% 20%,#4b286b 0%,#17102d 42%,#05050d 100%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-.stars{
-    position:fixed;
-    inset:0;
-    background-image:
-      radial-gradient(white 1px,transparent 1px),
-      radial-gradient(white 1px,transparent 1px);
-    background-size:80px 80px,120px 120px;
-    background-position:10px 20px,50px 70px;
-    opacity:.5;
-    animation:moveStars 12s linear infinite;
+#sky{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
 }
 
-@keyframes moveStars{
-    from{transform:translateY(0)}
-    to{transform:translateY(80px)}
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.2;transform:scale(.7)}
+  to{opacity:1;transform:scale(1.5)}
+}
+
+.moon{
+  position:fixed;
+  top:35px;
+  right:35px;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:#fff8dc;
+  box-shadow:0 0 35px #fff8dc99;
 }
 
 .screen{
-    position:relative;
-    z-index:2;
-    width:90%;
-    max-width:430px;
-    animation:fadeIn 1s;
+  position:relative;
+  z-index:5;
+  width:92%;
+  max-width:430px;
+  animation:appear .8s ease;
 }
 
 .hidden{
-    display:none;
+  display:none;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
 
 h1{
-    font-size:30px;
-    margin-bottom:15px;
+  font-size:31px;
+  margin-bottom:14px;
+  text-shadow:0 0 20px #ff79ad;
 }
 
-p{
-    font-size:17px;
-    line-height:1.6;
+.subtitle{
+  color:#f6ddeb;
+  font-size:16px;
+  line-height:1.6;
 }
 
-.gift{
-    width:150px;
-    height:120px;
-    margin:35px auto 25px;
-    position:relative;
-    cursor:pointer;
-    animation:bounce 1.5s infinite;
+.glow{
+  color:#ff8fbd;
+  text-shadow:0 0 15px #ff4f9b;
 }
 
-.box{
-    position:absolute;
-    bottom:0;
-    width:150px;
-    height:90px;
-    background:#ff4f91;
-    border-radius:8px;
+/* GIFT */
+
+.gift-area{
+  margin:45px auto 25px;
+  width:190px;
+  height:150px;
+  position:relative;
+  cursor:pointer;
+  animation:float 2s ease-in-out infinite;
 }
 
-.lid{
-    position:absolute;
-    top:5px;
-    left:-8px;
-    width:166px;
-    height:32px;
-    background:#ff76aa;
-    border-radius:8px;
+@keyframes float{
+  50%{transform:translateY(-12px)}
 }
 
-.ribbon-v{
-    position:absolute;
-    left:62px;
-    bottom:0;
-    width:27px;
-    height:120px;
-    background:#ffd1e3;
-    opacity:.9;
+.gift-box{
+  position:absolute;
+  bottom:0;
+  left:20px;
+  width:150px;
+  height:100px;
+  background:linear-gradient(135deg,#ff4f91,#c92868);
+  border-radius:10px;
+  box-shadow:0 15px 35px #0008;
 }
 
-.ribbon-h{
-    position:absolute;
-    top:5px;
-    left:0;
-    width:150px;
-    height:32px;
-    background:#ffd1e3;
-    opacity:.9;
+.gift-lid{
+  position:absolute;
+  top:25px;
+  left:12px;
+  width:166px;
+  height:35px;
+  background:linear-gradient(135deg,#ff76ad,#dc3678);
+  border-radius:8px;
+  z-index:3;
+  transition:.7s;
 }
 
-@keyframes bounce{
-    0%,100%{transform:translateY(0) rotate(0)}
-    50%{transform:translateY(-12px) rotate(2deg)}
+.gift-ribbon{
+  position:absolute;
+  left:80px;
+  bottom:0;
+  width:30px;
+  height:125px;
+  background:#ffd7e7;
+  z-index:2;
 }
+
+.gift-bow{
+  position:absolute;
+  top:0;
+  left:67px;
+  font-size:50px;
+  z-index:4;
+}
+
+.gift-area.open .gift-lid{
+  transform:translateY(-65px) rotate(-8deg);
+}
+
+/* BUTTON */
 
 button{
-    border:0;
-    padding:14px 30px;
-    border-radius:30px;
-    font-size:17px;
-    cursor:pointer;
-    background:white;
-    color:#e63d82;
-    box-shadow:0 5px 20px #0005;
+  border:none;
+  padding:14px 28px;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  color:#c82c69;
+  background:#fff;
+  box-shadow:0 0 25px #ff77ad77;
+  transition:.25s;
 }
 
-.flowers{
-    font-size:55px;
-    margin:25px 0;
-    animation:grow 2s ease;
+button:active{
+  transform:scale(.94);
 }
 
-@keyframes grow{
-    from{transform:scale(0);opacity:0}
-    to{transform:scale(1);opacity:1}
+/* FLOWERS */
+
+.flower-field{
+  height:180px;
+  margin:20px 0;
+  position:relative;
 }
+
+.flower{
+  position:absolute;
+  bottom:5px;
+  font-size:55px;
+  transform:scale(0);
+  animation:bloom 1.3s forwards;
+}
+
+.f1{left:5%}
+.f2{left:28%;animation-delay:.3s}
+.f3{left:52%;animation-delay:.6s}
+.f4{left:76%;animation-delay:.9s}
+
+@keyframes bloom{
+  0%{transform:scale(0) translateY(30px)}
+  70%{transform:scale(1.2)}
+  100%{transform:scale(1)}
+}
+
+/* ENVELOPE */
 
 .envelope{
-    font-size:85px;
-    margin:25px;
-    cursor:pointer;
-    animation:pulse 1.4s infinite;
+  margin:35px auto;
+  font-size:105px;
+  cursor:pointer;
+  filter:drop-shadow(0 0 20px #ff70aa);
+  animation:pulse 1.4s infinite;
 }
 
 @keyframes pulse{
-    50%{transform:scale(1.12)}
+  50%{transform:scale(1.08)}
 }
+
+/* LETTER */
 
 .letter{
-    background:#fff;
-    color:#54203b;
-    padding:28px 22px;
-    border-radius:20px;
-    box-shadow:0 15px 40px #0008;
-    animation:letterOpen 1s;
+  padding:28px 22px;
+  border-radius:25px;
+  background:#fff;
+  color:#54203b;
+  box-shadow:0 20px 60px #0009;
 }
 
-@keyframes letterOpen{
-    from{transform:scale(.5) rotate(-5deg);opacity:0}
-    to{transform:scale(1) rotate(0);opacity:1}
+.letter h2{
+  color:#df3c79;
+  margin-bottom:16px;
 }
+
+.typing{
+  min-height:130px;
+  line-height:1.7;
+  font-size:16px;
+}
+
+.big-love{
+  margin:15px 0;
+  font-size:29px;
+  font-weight:bold;
+  color:#e83c7d;
+  text-shadow:0 0 12px #ff9bc1;
+}
+
+/* MR CHIRKUT */
+
+.chirkut{
+  margin:18px 0 22px;
+  font-size:20px;
+  font-weight:bold;
+  color:#df3c79;
+  text-shadow:0 0 10px #ff9bc1;
+}
+
+/* HEARTS */
 
 .heart{
-    position:fixed;
-    font-size:25px;
-    animation:floatUp 4s linear forwards;
-    z-index:1;
+  position:fixed;
+  bottom:-40px;
+  font-size:22px;
+  z-index:10;
+  pointer-events:none;
+  animation:rise 5s linear forwards;
 }
 
-@keyframes floatUp{
-    from{
-        transform:translateY(0) scale(.7);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-100vh) scale(1.5);
-        opacity:0;
-    }
+@keyframes rise{
+  0%{
+    opacity:0;
+    transform:translateY(0) scale(.6) rotate(0);
+  }
+  15%{opacity:1}
+  100%{
+    opacity:0;
+    transform:translateY(-110vh) scale(1.5) rotate(25deg);
+  }
 }
 
-.big{
-    font-size:35px;
-    color:#ff72a8;
-    margin:18px 0;
-    font-weight:bold;
+/* FINAL */
+
+.final-heart{
+  font-size:90px;
+  animation:heartbeat 1s infinite;
+  margin:20px;
+}
+
+@keyframes heartbeat{
+  50%{transform:scale(1.2)}
+}
+
+.final-text{
+  font-size:18px;
+  line-height:1.7;
+  color:#f8dce9;
+}
+
+.sparkle{
+  position:fixed;
+  font-size:22px;
+  animation:spark 2s forwards;
+  z-index:20;
+}
+
+@keyframes spark{
+  from{
+    transform:scale(0);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-150px) scale(1.7);
+    opacity:0;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="stars"></div>
+<div id="sky"></div>
+<div class="moon"></div>
 
 <!-- SCREEN 1 -->
-<div class="screen" id="screen1">
-    <h1>✨ A Little Surprise ✨</h1>
 
-    <p>
-        Tumhare liye kuch special hai... 🥺💗
-        <br>
-        Gift ko tap karo 🎁
-    </p>
+<div class="screen" id="s1">
 
-    <div class="gift" onclick="openGift()">
-        <div class="lid"></div>
-        <div class="box"></div>
-        <div class="ribbon-v"></div>
-        <div class="ribbon-h"></div>
-    </div>
+  <h1>✨ I Have A Surprise For You ✨</h1>
+
+  <p class="subtitle">
+    Kuch special hai tumhare liye... 🥺💗
+    <br><br>
+    <span class="glow">Gift ko touch karo 🎁</span>
+  </p>
+
+  <div class="gift-area" onclick="openGift(this)">
+    <div class="gift-bow">🎀</div>
+    <div class="gift-lid"></div>
+    <div class="gift-box"></div>
+    <div class="gift-ribbon"></div>
+  </div>
+
 </div>
 
 
 <!-- SCREEN 2 -->
-<div class="screen hidden" id="screen2">
-    <h1>🌸 For You 🌸</h1>
 
-    <div class="flowers">
-        🌷 🌸 🌹 🌸 🌷
-    </div>
+<div class="screen hidden" id="s2">
 
-    <p>
-        Har flower ke saath ek chhoti si smile tumhare liye... 🫶
-    </p>
+  <h1>🌸 Just For You 🌸</h1>
 
+  <p class="subtitle">
+    Jaise flowers slowly bloom karte hain...
     <br>
+    waise hi ek chhoti si feeling hai jo kehni hai. 💗
+  </p>
 
-    <button onclick="openLetter()">
-        💌 Open Your Letter
-    </button>
+  <div class="flower-field">
+    <div class="flower f1">🌷</div>
+    <div class="flower f2">🌸</div>
+    <div class="flower f3">🌹</div>
+    <div class="flower f4">🌷</div>
+  </div>
+
+  <button onclick="openEnvelope()">
+    💌 Next Surprise
+  </button>
+
 </div>
 
 
 <!-- SCREEN 3 -->
-<div class="screen hidden" id="screen3">
-    <h1>💌 Secret Letter</h1>
 
-    <div class="envelope" onclick="showMessage()">
-        💌
-    </div>
+<div class="screen hidden" id="s3">
 
-    <p>Letter ko tap karo... 👀💗</p>
+  <h1>💌 A Secret Letter</h1>
+
+  <p class="subtitle">
+    Is letter ke andar kuch dil se likha hai...
+  </p>
+
+  <div class="envelope" onclick="openLetter()">
+    💌
+  </div>
+
+  <p class="subtitle">
+    Tap the letter 💗
+  </p>
+
 </div>
 
 
 <!-- SCREEN 4 -->
-<div class="screen hidden" id="screen4">
 
-    <div class="letter">
+<div class="screen hidden" id="s4">
 
-        <div style="font-size:45px;">🌸💗🌸</div>
+  <div class="letter">
 
-        <h1>Hey Babyyy... 🥺</h1>
+    <h2>For You, Babyyy 🌸</h2>
 
-        <p>
-            Pata nahi ye words kitna express kar paayenge,
-            but ek baat dil se kehni thi...
-        </p>
+    <div class="typing" id="typing"></div>
 
-        <div class="big">
-            I LOVE YOU BABYY ❤️
-            <br>
-            VERY MUCH 💕
-        </div>
-
-        <p>
-            Tum mere liye bahut special ho. 🫶
-            <br>
-            Bas aise hi meri life mein smile karti rehna. 🌷
-        </p>
-
-        <br>
-
-        <button onclick="finalSurprise()">
-            💖 One More Surprise
-        </button>
-
+    <div class="big-love">
+      I LOVE YOU BABYY ❤️
+      <br>
+      VERY MUCH 💕
     </div>
+
+    <div class="chirkut">
+      Aap ka MR. CHIRKUT 🥺❤️
+    </div>
+
+    <button onclick="finalSurprise()">
+      💖 One Last Thing
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- SCREEN 5 -->
+
+<div class="screen hidden" id="s5">
+
+  <div class="final-heart">💗</div>
+
+  <h1>
+    You Are Special To Me
+  </h1>
+
+  <p class="final-text">
+    Bas ek hi wish hai... 🥺
+    <br><br>
+    Tum hamesha smile karti raho,
+    aur meri life mein aise hi special raho. 🌸
+    <br><br>
+    <b>Always keep smiling, Babyyy 💕</b>
+  </p>
 
 </div>
 
 
 <script>
 
-function hideAll(){
-    document.querySelectorAll(".screen")
-    .forEach(x => x.classList.add("hidden"));
+/* STARS */
+
+for(let i=0;i<90;i++){
+
+  const star=document.createElement("div");
+
+  star.className="star";
+
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+
+  star.style.animationDelay=
+    Math.random()*2+"s";
+
+  document.getElementById("sky")
+    .appendChild(star);
 }
 
-function openGift(){
-    hideAll();
-    document.getElementById("screen2")
+
+/* SCREEN CHANGE */
+
+function changeScreen(id){
+
+  document.querySelectorAll(".screen")
+    .forEach(s=>s.classList.add("hidden"));
+
+  document.getElementById(id)
     .classList.remove("hidden");
-
-    hearts();
 }
+
+
+/* GIFT */
+
+function openGift(el){
+
+  el.classList.add("open");
+
+  setTimeout(()=>{
+
+    changeScreen("s2");
+    createHearts(12);
+
+  },900);
+}
+
+
+/* ENVELOPE */
+
+function openEnvelope(){
+
+  changeScreen("s3");
+  createHearts(10);
+
+}
+
+
+/* LETTER */
 
 function openLetter(){
-    hideAll();
-    document.getElementById("screen3")
-    .classList.remove("hidden");
 
-    hearts();
+  changeScreen("s4");
+
+  const text =
+  "Pata nahi ye chhoti si webpage tumhe kitni special lagegi, but maine ise dil se banaya hai... 🥺💗 Tum meri life mein bahut special ho. Tumhari smile mere liye bahut precious hai. Bas itna kehna tha ki I really really love you... ❤️";
+
+  let i=0;
+
+  const box=document.getElementById("typing");
+
+  box.innerHTML="";
+
+  const timer=setInterval(()=>{
+
+    box.innerHTML += text.charAt(i);
+
+    i++;
+
+    if(i>=text.length){
+      clearInterval(timer);
+    }
+
+  },35);
+
+  createHearts(18);
 }
 
-function showMessage(){
-    hideAll();
-    document.getElementById("screen4")
-    .classList.remove("hidden");
 
-    hearts();
-}
+/* FINAL SURPRISE */
 
 function finalSurprise(){
 
-    for(let i=0;i<35;i++){
-        setTimeout(() => {
-            hearts();
-        }, i*100);
-    }
+  changeScreen("s5");
 
-    alert("I LOVE YOU BABYY ❤️🌸");
-}
+  createHearts(45);
 
-function hearts(){
-
-    const heart = document.createElement("div");
-
-    const emojis = ["❤️","💗","💕","💖","🌸","🌷","✨"];
-
-    heart.className = "heart";
-    heart.innerHTML =
-      emojis[Math.floor(Math.random()*emojis.length)];
-
-    heart.style.left =
-      Math.random()*100 + "vw";
-
-    heart.style.bottom = "-30px";
-
-    heart.style.animationDuration =
-      (3 + Math.random()*3) + "s";
-
-    document.body.appendChild(heart);
+  for(let i=0;i<30;i++){
 
     setTimeout(()=>{
-        heart.remove();
-    },6000);
+
+      const s=document.createElement("div");
+
+      s.className="sparkle";
+
+      s.innerHTML=
+        ["✨","💖","🌸","💕","⭐"][Math.floor(Math.random()*5)];
+
+      s.style.left=Math.random()*100+"vw";
+      s.style.top=(50+Math.random()*40)+"vh";
+
+      document.body.appendChild(s);
+
+      setTimeout(()=>{
+        s.remove();
+      },2000);
+
+    },i*70);
+
+  }
+
+}
+
+
+/* FLOATING HEARTS */
+
+function createHearts(amount){
+
+  for(let i=0;i<amount;i++){
+
+    setTimeout(()=>{
+
+      const h=document.createElement("div");
+
+      h.className="heart";
+
+      h.innerHTML=
+        ["❤️","💗","💕","💖","🌸","✨"]
+        [Math.floor(Math.random()*6)];
+
+      h.style.left=Math.random()*100+"vw";
+
+      h.style.animationDuration=
+        (3+Math.random()*3)+"s";
+
+      document.body.appendChild(h);
+
+      setTimeout(()=>{
+        h.remove();
+      },6000);
+
+    },i*120);
+
+  }
+
 }
 
 </script>
