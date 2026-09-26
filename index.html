@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>For My Special Person 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Babyyy ❤️</title>
 
 <style>
 *{
@@ -13,23 +13,27 @@
 }
 
 body{
-  min-height:100vh;
   overflow:hidden;
-  font-family:Arial,sans-serif;
+  background:#02010b;
+  font-family:Arial, sans-serif;
   color:white;
-  background:
-    radial-gradient(circle at 50% 20%,#4b286b 0%,#17102d 42%,#05050d 100%);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
 }
 
-#sky{
+/* GALAXY */
+#galaxy{
   position:fixed;
   inset:0;
-  overflow:hidden;
-  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 20%, #3d176b 0%, transparent 28%),
+    radial-gradient(circle at 20% 80%, #111d63 0%, transparent 30%),
+    linear-gradient(135deg,#02010b,#08021c,#02010b);
+  z-index:-3;
+}
+
+#stars{
+  position:fixed;
+  inset:0;
+  z-index:-2;
 }
 
 .star{
@@ -42,411 +46,449 @@ body{
 }
 
 @keyframes twinkle{
-  from{opacity:.2;transform:scale(.7)}
+  from{opacity:.15;transform:scale(.7)}
   to{opacity:1;transform:scale(1.5)}
 }
 
+/* MOON */
 .moon{
   position:fixed;
-  top:35px;
+  top:45px;
   right:35px;
-  width:70px;
-  height:70px;
+  width:85px;
+  height:85px;
   border-radius:50%;
-  background:#fff8dc;
-  box-shadow:0 0 35px #fff8dc99;
+  background:#fff8d8;
+  box-shadow:
+    0 0 20px #fff,
+    0 0 60px #ffeab0,
+    0 0 110px #cfaaff;
+  z-index:-1;
 }
 
+/* SCREEN */
 .screen{
-  position:relative;
-  z-index:5;
-  width:92%;
-  max-width:430px;
-  animation:appear .8s ease;
-}
-
-.hidden{
+  width:100vw;
+  height:100vh;
   display:none;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:25px;
+  perspective:1200px;
 }
 
-@keyframes appear{
+.screen.active{
+  display:flex;
+  animation:screenIn 1s ease;
+}
+
+@keyframes screenIn{
   from{
     opacity:0;
-    transform:translateY(20px) scale(.96);
+    transform:scale(.75) rotateX(20deg);
   }
   to{
     opacity:1;
-    transform:translateY(0) scale(1);
+    transform:scale(1) rotateX(0);
   }
+}
+
+.content{
+  width:min(92%,500px);
+  padding:30px 20px;
+  border-radius:30px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(15px);
+  box-shadow:
+    0 0 30px rgba(255,80,180,.15),
+    inset 0 0 30px rgba(255,255,255,.03);
+  transform-style:preserve-3d;
 }
 
 h1{
-  font-size:31px;
-  margin-bottom:14px;
-  text-shadow:0 0 20px #ff79ad;
+  font-size:clamp(27px,7vw,45px);
+  margin-bottom:15px;
+  text-shadow:
+    0 0 10px #ff69c9,
+    0 0 30px #ff1493;
 }
 
-.subtitle{
-  color:#f6ddeb;
-  font-size:16px;
-  line-height:1.6;
-}
-
-.glow{
-  color:#ff8fbd;
-  text-shadow:0 0 15px #ff4f9b;
-}
-
-/* GIFT */
-
-.gift-area{
-  margin:45px auto 25px;
-  width:190px;
-  height:150px;
-  position:relative;
-  cursor:pointer;
-  animation:float 2s ease-in-out infinite;
-}
-
-@keyframes float{
-  50%{transform:translateY(-12px)}
-}
-
-.gift-box{
-  position:absolute;
-  bottom:0;
-  left:20px;
-  width:150px;
-  height:100px;
-  background:linear-gradient(135deg,#ff4f91,#c92868);
-  border-radius:10px;
-  box-shadow:0 15px 35px #0008;
-}
-
-.gift-lid{
-  position:absolute;
-  top:25px;
-  left:12px;
-  width:166px;
-  height:35px;
-  background:linear-gradient(135deg,#ff76ad,#dc3678);
-  border-radius:8px;
-  z-index:3;
-  transition:.7s;
-}
-
-.gift-ribbon{
-  position:absolute;
-  left:80px;
-  bottom:0;
-  width:30px;
-  height:125px;
-  background:#ffd7e7;
-  z-index:2;
-}
-
-.gift-bow{
-  position:absolute;
-  top:0;
-  left:67px;
-  font-size:50px;
-  z-index:4;
-}
-
-.gift-area.open .gift-lid{
-  transform:translateY(-65px) rotate(-8deg);
+p{
+  font-size:17px;
+  line-height:1.7;
+  color:#f8eaff;
 }
 
 /* BUTTON */
-
 button{
-  border:none;
+  margin-top:25px;
   padding:14px 28px;
-  border-radius:30px;
+  border:none;
+  border-radius:50px;
+  color:white;
   font-size:16px;
   font-weight:bold;
   cursor:pointer;
-  color:#c82c69;
-  background:#fff;
-  box-shadow:0 0 25px #ff77ad77;
-  transition:.25s;
+  background:linear-gradient(135deg,#ff1493,#8a2be2);
+  box-shadow:
+    0 0 15px #ff1493,
+    0 0 40px rgba(255,20,147,.5);
+  transition:.3s;
 }
 
-button:active{
-  transform:scale(.94);
+button:hover{
+  transform:translateY(-4px) scale(1.05);
+}
+
+/* 3D GIFT */
+.gift{
+  position:relative;
+  width:145px;
+  height:125px;
+  margin:35px auto;
+  transform-style:preserve-3d;
+  animation:giftFloat 2s ease-in-out infinite;
+}
+
+@keyframes giftFloat{
+  0%,100%{transform:translateY(0) rotateY(-8deg)}
+  50%{transform:translateY(-15px) rotateY(8deg)}
+}
+
+.giftBox{
+  position:absolute;
+  bottom:0;
+  width:145px;
+  height:100px;
+  border-radius:8px;
+  background:linear-gradient(135deg,#ff277f,#8b1cff);
+  box-shadow:
+    0 15px 40px rgba(255,0,150,.5),
+    inset 0 0 20px rgba(255,255,255,.2);
+}
+
+.ribbonV{
+  position:absolute;
+  left:60px;
+  width:25px;
+  height:100%;
+  background:#ffd83d;
+}
+
+.ribbonH{
+  position:absolute;
+  top:40px;
+  width:100%;
+  height:22px;
+  background:#ffd83d;
+}
+
+.lid{
+  position:absolute;
+  top:0;
+  left:-7px;
+  width:159px;
+  height:30px;
+  border-radius:7px;
+  background:linear-gradient(135deg,#ff4c9b,#a02cff);
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  transform-origin:left bottom;
+  transition:1s;
+  z-index:3;
+}
+
+.gift.open .lid{
+  transform:rotateX(-115deg) translateY(-15px);
 }
 
 /* FLOWERS */
-
-.flower-field{
-  height:180px;
-  margin:20px 0;
-  position:relative;
+.flowers{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  font-size:55px;
+  margin:30px 0;
 }
 
 .flower{
-  position:absolute;
-  bottom:5px;
-  font-size:55px;
-  transform:scale(0);
-  animation:bloom 1.3s forwards;
+  animation:bloom 1.5s infinite alternate;
 }
 
-.f1{left:5%}
-.f2{left:28%;animation-delay:.3s}
-.f3{left:52%;animation-delay:.6s}
-.f4{left:76%;animation-delay:.9s}
+.flower:nth-child(2){animation-delay:.2s}
+.flower:nth-child(3){animation-delay:.4s}
+.flower:nth-child(4){animation-delay:.6s}
 
 @keyframes bloom{
-  0%{transform:scale(0) translateY(30px)}
-  70%{transform:scale(1.2)}
-  100%{transform:scale(1)}
+  from{transform:scale(.8) rotate(-8deg)}
+  to{transform:scale(1.12) rotate(8deg)}
 }
 
 /* ENVELOPE */
-
 .envelope{
-  margin:35px auto;
-  font-size:105px;
+  font-size:100px;
   cursor:pointer;
-  filter:drop-shadow(0 0 20px #ff70aa);
-  animation:pulse 1.4s infinite;
+  display:inline-block;
+  margin:25px;
+  filter:drop-shadow(0 0 20px #ff4da6);
+  animation:envelopeFloat 2s infinite ease-in-out;
 }
 
-@keyframes pulse{
-  50%{transform:scale(1.08)}
+@keyframes envelopeFloat{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-15px) rotate(3deg)}
 }
 
 /* LETTER */
-
 .letter{
+  background:
+    linear-gradient(135deg,#fff9ed,#ffe9f2);
+  color:#5c2446;
   padding:28px 22px;
-  border-radius:25px;
-  background:#fff;
-  color:#54203b;
-  box-shadow:0 20px 60px #0009;
+  border-radius:18px;
+  box-shadow:
+    0 0 30px rgba(255,100,180,.4),
+    0 20px 60px rgba(0,0,0,.5);
+  transform:rotateX(5deg) rotateY(-3deg);
+  animation:letterIn 1s ease;
+}
+
+@keyframes letterIn{
+  from{
+    opacity:0;
+    transform:translateY(40px) rotateX(45deg);
+  }
+  to{
+    opacity:1;
+    transform:rotateX(5deg) rotateY(-3deg);
+  }
 }
 
 .letter h2{
-  color:#df3c79;
-  margin-bottom:16px;
+  color:#e91e87;
+  margin-bottom:18px;
 }
 
-.typing{
-  min-height:130px;
-  line-height:1.7;
+#typing{
+  min-height:125px;
   font-size:16px;
+  line-height:1.8;
 }
 
-.big-love{
-  margin:15px 0;
-  font-size:29px;
+.bigLove{
+  margin-top:18px;
+  font-size:25px;
   font-weight:bold;
-  color:#e83c7d;
-  text-shadow:0 0 12px #ff9bc1;
+  color:#e91e87;
+  text-shadow:0 0 12px #ff69b4;
 }
-
-/* MR CHIRKUT */
 
 .chirkut{
-  margin:18px 0 22px;
+  margin-top:12px;
   font-size:20px;
   font-weight:bold;
-  color:#df3c79;
-  text-shadow:0 0 10px #ff9bc1;
+  color:#8b236d;
 }
 
 /* HEARTS */
-
 .heart{
   position:fixed;
-  bottom:-40px;
+  bottom:-30px;
   font-size:22px;
-  z-index:10;
   pointer-events:none;
-  animation:rise 5s linear forwards;
+  animation:heartUp 5s linear forwards;
+  z-index:10;
 }
 
-@keyframes rise{
+@keyframes heartUp{
   0%{
+    transform:translateY(0) scale(.7) rotate(0);
     opacity:0;
-    transform:translateY(0) scale(.6) rotate(0);
   }
   15%{opacity:1}
   100%{
+    transform:translateY(-110vh) translateX(var(--x)) scale(1.5) rotate(360deg);
     opacity:0;
-    transform:translateY(-110vh) scale(1.5) rotate(25deg);
   }
 }
 
 /* FINAL */
-
-.final-heart{
-  font-size:90px;
+.finalHeart{
+  font-size:100px;
   animation:heartbeat 1s infinite;
-  margin:20px;
+  filter:drop-shadow(0 0 30px #ff1493);
 }
 
 @keyframes heartbeat{
-  50%{transform:scale(1.2)}
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.25)}
 }
 
-.final-text{
-  font-size:18px;
-  line-height:1.7;
-  color:#f8dce9;
-}
-
-.sparkle{
+.spark{
   position:fixed;
-  font-size:22px;
-  animation:spark 2s forwards;
-  z-index:20;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:white;
+  pointer-events:none;
+  animation:sparkle 1.5s forwards;
 }
 
-@keyframes spark{
+@keyframes sparkle{
   from{
-    transform:scale(0);
+    transform:translate(0,0) scale(1);
     opacity:1;
   }
   to{
-    transform:translateY(-150px) scale(1.7);
+    transform:translate(var(--sx),var(--sy)) scale(0);
     opacity:0;
   }
+}
+
+.small{
+  margin-top:15px;
+  font-size:13px;
+  opacity:.7;
 }
 </style>
 </head>
 
 <body>
 
-<div id="sky"></div>
+<div id="galaxy"></div>
+<div id="stars"></div>
 <div class="moon"></div>
 
 <!-- SCREEN 1 -->
+<section class="screen active" id="s1">
+  <div class="content">
+    <h1>✨ I Have A Surprise For You ✨</h1>
 
-<div class="screen" id="s1">
+    <p>
+      Kuch bahut special hai tumhare liye... 🥺💗
+      <br>
+      Lekin pehle gift open karo 🎁
+    </p>
 
-  <h1>✨ I Have A Surprise For You ✨</h1>
+    <div class="gift" id="gift">
+      <div class="lid"></div>
+      <div class="giftBox">
+        <div class="ribbonV"></div>
+        <div class="ribbonH"></div>
+      </div>
+    </div>
 
-  <p class="subtitle">
-    Kuch special hai tumhare liye... 🥺💗
-    <br><br>
-    <span class="glow">Gift ko touch karo 🎁</span>
-  </p>
-
-  <div class="gift-area" onclick="openGift(this)">
-    <div class="gift-bow">🎀</div>
-    <div class="gift-lid"></div>
-    <div class="gift-box"></div>
-    <div class="gift-ribbon"></div>
+    <button onclick="openGift()">🎁 Open My Surprise</button>
   </div>
-
-</div>
-
+</section>
 
 <!-- SCREEN 2 -->
+<section class="screen" id="s2">
+  <div class="content">
+    <h1>🌸 Just For You 🌸</h1>
 
-<div class="screen hidden" id="s2">
+    <p>
+      Ye flowers tumhare liye...
+      <br>
+      kyunki tumhari smile bhi in flowers se zyada pretty hai 💗
+    </p>
 
-  <h1>🌸 Just For You 🌸</h1>
+    <div class="flowers">
+      <span class="flower">🌷</span>
+      <span class="flower">🌸</span>
+      <span class="flower">🌹</span>
+      <span class="flower">🌷</span>
+    </div>
 
-  <p class="subtitle">
-    Jaise flowers slowly bloom karte hain...
-    <br>
-    waise hi ek chhoti si feeling hai jo kehni hai. 💗
-  </p>
-
-  <div class="flower-field">
-    <div class="flower f1">🌷</div>
-    <div class="flower f2">🌸</div>
-    <div class="flower f3">🌹</div>
-    <div class="flower f4">🌷</div>
+    <button onclick="showScreen(3)">
+      💌 Next Surprise
+    </button>
   </div>
-
-  <button onclick="openEnvelope()">
-    💌 Next Surprise
-  </button>
-
-</div>
-
+</section>
 
 <!-- SCREEN 3 -->
+<section class="screen" id="s3">
+  <div class="content">
+    <h1>💌 A Secret Letter</h1>
 
-<div class="screen hidden" id="s3">
+    <p>
+      Is letter ke andar kuch dil se likha hai...
+      🥺❤️
+    </p>
 
-  <h1>💌 A Secret Letter</h1>
+    <div class="envelope" onclick="openLetter()">
+      💌
+    </div>
 
-  <p class="subtitle">
-    Is letter ke andar kuch dil se likha hai...
-  </p>
-
-  <div class="envelope" onclick="openLetter()">
-    💌
+    <p class="small">
+      Letter ko touch karo 💗
+    </p>
   </div>
-
-  <p class="subtitle">
-    Tap the letter 💗
-  </p>
-
-</div>
-
+</section>
 
 <!-- SCREEN 4 -->
+<section class="screen" id="s4">
+  <div class="content">
 
-<div class="screen hidden" id="s4">
+    <div class="letter">
 
-  <div class="letter">
+      <h2>For You, Babyyy 🌸</h2>
 
-    <h2>For You, Babyyy 🌸</h2>
+      <p id="typing"></p>
 
-    <div class="typing" id="typing"></div>
+      <div class="bigLove">
+        I LOVE YOU BABYY ❤️
+        <br>
+        VERY MUCH 💕
+      </div>
 
-    <div class="big-love">
-      I LOVE YOU BABYY ❤️
-      <br>
-      VERY MUCH 💕
+      <!-- IMPORTANT -->
+      <div class="chirkut">
+        Aap ka MR. CHIRKUT 🥺❤️
+      </div>
+
     </div>
 
-    <div class="chirkut">
-      Aap ka MR. CHIRKUT 🥺❤️
-    </div>
-
-    <button onclick="finalSurprise()">
+    <button onclick="showScreen(5); finalEffect()">
       💖 One Last Thing
     </button>
 
   </div>
-
-</div>
-
+</section>
 
 <!-- SCREEN 5 -->
+<section class="screen" id="s5">
+  <div class="content">
 
-<div class="screen hidden" id="s5">
+    <div class="finalHeart">❤️</div>
 
-  <div class="final-heart">💗</div>
+    <h1>You Are Special To Me ✨</h1>
 
-  <h1>
-    You Are Special To Me
-  </h1>
+    <p>
+      Bas ek hi wish hai... 🥺
+      <br><br>
 
-  <p class="final-text">
-    Bas ek hi wish hai... 🥺
-    <br><br>
-    Tum hamesha smile karti raho,
-    aur meri life mein aise hi special raho. 🌸
-    <br><br>
-    <b>Always keep smiling, Babyyy 💕</b>
-  </p>
+      Tum hamesha smile karti raho,
+      aur meri life mein aise hi special raho. 🌸
+      <br><br>
 
-</div>
+      Always keep smiling, Babyyy 💕
+    </p>
 
+    <button onclick="finalEffect()">
+      ✨ Tap For Magic
+    </button>
+
+  </div>
+</section>
 
 <script>
 
 /* STARS */
+const stars = document.getElementById("stars");
 
-for(let i=0;i<90;i++){
+for(let i=0;i<160;i++){
 
   const star=document.createElement("div");
 
@@ -455,149 +497,157 @@ for(let i=0;i<90;i++){
   star.style.left=Math.random()*100+"%";
   star.style.top=Math.random()*100+"%";
 
-  star.style.animationDelay=
-    Math.random()*2+"s";
+  star.style.animationDelay=(Math.random()*2)+"s";
 
-  document.getElementById("sky")
-    .appendChild(star);
+  stars.appendChild(star);
 }
-
 
 /* SCREEN CHANGE */
-
-function changeScreen(id){
+function showScreen(number){
 
   document.querySelectorAll(".screen")
-    .forEach(s=>s.classList.add("hidden"));
+    .forEach(s=>s.classList.remove("active"));
 
-  document.getElementById(id)
-    .classList.remove("hidden");
+  document.getElementById("s"+number)
+    .classList.add("active");
+
 }
 
-
 /* GIFT */
+function openGift(){
 
-function openGift(el){
+  const gift=document.getElementById("gift");
 
-  el.classList.add("open");
+  gift.classList.add("open");
 
   setTimeout(()=>{
 
-    changeScreen("s2");
-    createHearts(12);
+    createHearts(15);
+
+    showScreen(2);
 
   },900);
 }
 
-
-/* ENVELOPE */
-
-function openEnvelope(){
-
-  changeScreen("s3");
-  createHearts(10);
-
-}
-
-
 /* LETTER */
-
 function openLetter(){
 
-  changeScreen("s4");
+  showScreen(4);
+
+  startTyping();
+
+  createHearts(10);
+}
+
+/* TYPING EFFECT */
+let typed=false;
+
+function startTyping(){
+
+  if(typed)return;
+
+  typed=true;
 
   const text =
   "Pata nahi ye chhoti si webpage tumhe kitni special lagegi, but maine ise dil se banaya hai... 🥺💗 Tum meri life mein bahut special ho. Tumhari smile mere liye bahut precious hai. Bas itna kehna tha ki I really really love you... ❤️";
 
+  const element=document.getElementById("typing");
+
   let i=0;
 
-  const box=document.getElementById("typing");
+  function type(){
 
-  box.innerHTML="";
+    if(i<text.length){
 
-  const timer=setInterval(()=>{
+      element.innerHTML += text.charAt(i);
 
-    box.innerHTML += text.charAt(i);
+      i++;
 
-    i++;
+      setTimeout(type,35);
 
-    if(i>=text.length){
-      clearInterval(timer);
     }
-
-  },35);
-
-  createHearts(18);
-}
-
-
-/* FINAL SURPRISE */
-
-function finalSurprise(){
-
-  changeScreen("s5");
-
-  createHearts(45);
-
-  for(let i=0;i<30;i++){
-
-    setTimeout(()=>{
-
-      const s=document.createElement("div");
-
-      s.className="sparkle";
-
-      s.innerHTML=
-        ["✨","💖","🌸","💕","⭐"][Math.floor(Math.random()*5)];
-
-      s.style.left=Math.random()*100+"vw";
-      s.style.top=(50+Math.random()*40)+"vh";
-
-      document.body.appendChild(s);
-
-      setTimeout(()=>{
-        s.remove();
-      },2000);
-
-    },i*70);
 
   }
 
+  type();
 }
 
-
 /* FLOATING HEARTS */
-
 function createHearts(amount){
 
   for(let i=0;i<amount;i++){
 
     setTimeout(()=>{
 
-      const h=document.createElement("div");
+      const heart=document.createElement("div");
 
-      h.className="heart";
+      heart.className="heart";
 
-      h.innerHTML=
-        ["❤️","💗","💕","💖","🌸","✨"]
-        [Math.floor(Math.random()*6)];
+      heart.innerHTML=
+        ["❤️","💗","💕","💖","💘","💝"][Math.floor(Math.random()*6)];
 
-      h.style.left=Math.random()*100+"vw";
+      heart.style.left=Math.random()*100+"%";
 
-      h.style.animationDuration=
+      heart.style.setProperty(
+        "--x",
+        (Math.random()*200-100)+"px"
+      );
+
+      heart.style.animationDuration=
         (3+Math.random()*3)+"s";
 
-      document.body.appendChild(h);
+      document.body.appendChild(heart);
 
       setTimeout(()=>{
-        h.remove();
+        heart.remove();
       },6000);
 
-    },i*120);
+    },i*100);
 
   }
-
 }
+
+/* FINAL SPARKLES */
+function finalEffect(){
+
+  createHearts(30);
+
+  for(let i=0;i<60;i++){
+
+    setTimeout(()=>{
+
+      const spark=document.createElement("div");
+
+      spark.className="spark";
+
+      spark.style.left="50%";
+      spark.style.top="50%";
+
+      spark.style.setProperty(
+        "--sx",
+        (Math.random()*500-250)+"px"
+      );
+
+      spark.style.setProperty(
+        "--sy",
+        (Math.random()*500-250)+"px"
+      );
+
+      document.body.appendChild(spark);
+
+      setTimeout(()=>{
+        spark.remove();
+      },1500);
+
+    },i*20);
+
+  }
+}
+
+/* AUTO HEARTS */
+setInterval(()=>{
+  createHearts(1);
+},2500);
 
 </script>
 
